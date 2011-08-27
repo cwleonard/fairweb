@@ -53,7 +53,7 @@ public class ForgotPasswordAction extends Action {
 					
 					msg.setFrom(new InternetAddress("jcfair@countryilink.net"));
 					msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmail(), false));
-					msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("casey@amphibian.com", false));
+					//msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("casey@amphibian.com", false));
 					
 					msg.setSubject("Juniata County Fair Website Login");
 					
