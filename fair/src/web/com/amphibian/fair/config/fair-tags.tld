@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+ PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+ "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+ <tlibversion>1.2</tlibversion>
+ <jspversion>1.1</jspversion>
+ <shortname>fair</shortname>
+ <uri></uri>
+
+ <tag>
+  <name>pipebox</name>
+  <tagclass>com.amphibian.fair.tags.PipeBoxTag</tagclass>
+  <info>outputs a pipe box</info>
+  <bodycontent>JSP</bodycontent>
+  <attribute>
+   <name>width</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>title</name>
+   <required>false</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+
+ <tag>
+  <name>classDisplay</name>
+  <tagclass>com.amphibian.fair.tags.ClassesDisplayTag</tagclass>
+  <info>outputs class display</info>
+  <bodycontent>EMPTY</bodycontent>
+  <attribute>
+   <name>premiumsClass</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+
+ <tag>
+  <name>header</name>
+  <tagclass>com.amphibian.fair.tags.HeaderTag</tagclass>
+  <info>outputs page header</info>
+  <bodycontent>EMPTY</bodycontent>
+  <attribute>
+   <name>navTab</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+
+ <tag>
+  <name>premiumsEntries</name>
+  <tagclass>com.amphibian.fair.tags.PremiumsEntriesTag</tagclass>
+  <info>outputs list of your premiums entries</info>
+  <bodycontent>EMPTY</bodycontent>
+ </tag>
+
+ <tag>
+  <name>personal</name>
+  <tagclass>com.amphibian.fair.tags.PersonalTag</tagclass>
+  <info>personal navigation</info>
+  <bodycontent>EMPTY</bodycontent>
+ </tag>
+
+ <tag>
+  <name>rulesWrite</name>
+  <tagclass>com.amphibian.fair.tags.RulesTag</tagclass>
+  <info>outputs rules text</info>
+  <bodycontent>EMPTY</bodycontent>
+  <attribute>
+   <name>name</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>property</name>
+   <required>false</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+
+</taglib>

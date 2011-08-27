@@ -1,0 +1,125 @@
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+       
+<struts-config>
+
+	<form-beans>
+		<form-bean name="NewsItemForm" type="com.amphibian.fair.form.NewsItemForm" />
+		<form-bean name="LoginForm" type="com.amphibian.fair.account.form.LoginForm" />
+		<form-bean name="ScheduleForm" type="com.amphibian.fair.form.ScheduleForm" />
+		<form-bean name="UserForm" type="com.amphibian.fair.account.form.UserForm" />
+		<form-bean name="EntryForm" type="com.amphibian.fair.premiums.form.EntryForm" />
+		<form-bean name="FileUploadForm" type="com.amphibian.fair.main.form.FileUploadForm" />
+	</form-beans>
+
+	<global-forwards>
+		<forward name="homeRedirect" path="home.do" redirect="true" />
+		<forward name="scheduleRedirect" path="schedule.do" redirect="true" />
+		<forward name="premiumsRedirect" path="premiums.do" redirect="true" />
+		<forward name="login" path="/account/jsp/login.jsp" />
+	</global-forwards>
+
+	<action-mappings>
+
+		<action path="/travel" type="com.amphibian.fair.action.TravelAction">
+			<forward name="travelPage" path="/jsp/travel.jsp" />
+		</action>
+
+		<action path="/report" type="com.amphibian.fair.action.LivestockEntryReportAction" validate="false">
+			<forward name="reportPage" path="/jsp/report.jsp" />
+		</action>
+
+
+<!-- ========================= Home Page ================= -->
+
+		<action path="/home" type="com.amphibian.fair.main.action.HomeAction">
+			<forward name="homePage" path="/main/jsp/home.jsp" />
+		</action>
+
+		<action path="/manageNews" type="com.amphibian.fair.main.action.ManageNewsAction" />
+
+		<action path="/manageInfo" type="com.amphibian.fair.main.action.ManageInfoAction" />
+
+		<action name="FileUploadForm" path="/manageDocuments" type="com.amphibian.fair.main.action.ManageDocumentsAction">
+			<forward name="uploadDone" path="/main/jsp/uploadDone.jsp" />
+        </action>
+        
+		<action path="/downloadFromDatabase" type="com.amphibian.fair.main.action.GetDocumentAction" />
+
+<!-- ========================= About Page ================= -->
+
+		<action path="/about" type="com.amphibian.fair.about.action.AboutAction">
+			<forward name="aboutPage" path="/about/jsp/about.jsp" />
+		</action>
+
+<!-- ========================= Schedule ================== -->
+
+		<action path="/schedule" type="com.amphibian.fair.schedule.action.ScheduleAction">
+			<forward name="schedulePage" path="/schedule/jsp/schedule.jsp" />
+			<forward name="schedulePage2" path="/schedule/jsp/schedule2.jsp" />
+		</action>
+
+		<action path="/modItem" type="com.amphibian.fair.schedule.action.ModifyItemAction" />
+
+		<action path="/delItem" type="com.amphibian.fair.schedule.action.DeleteItemAction" />
+
+		<action path="/loadItem" type="com.amphibian.fair.schedule.action.LoadItemAction" />
+
+		<action path="/modDay" type="com.amphibian.fair.schedule.action.ModifyDayAction" />
+
+<!-- ========================= Premiums Management ======= -->
+
+		<action path="/premiums" type="com.amphibian.fair.premiums.action.PremiumsAction">
+			<forward name="premiumsPage" path="/premiums/jsp/premiums.jsp" />
+		</action>
+
+		<action path="/classDetail" type="com.amphibian.fair.premiums.action.ClassDetailAction">
+			<forward name="classDetail" path="/premiums/jsp/classDetail.jsp" />
+		</action>
+
+		<action path="/showEntries" type="com.amphibian.fair.premiums.action.ShowEntriesAction">
+			<forward name="entriesPage" path="/premiums/jsp/entryList.jsp" />
+		</action>
+
+		<action name="EntryForm" path="/saveEntry" type="com.amphibian.fair.premiums.action.SaveEntryAction" />
+
+		<action name="EntryForm" path="/deleteEntry" type="com.amphibian.fair.premiums.action.DeleteEntryAction" />
+
+		<action path="/judgingpdf" type="com.amphibian.fair.premiums.action.JudgingSheetPDFAction" />
+
+		<action path="/yourEntries" type="com.amphibian.fair.premiums.action.PremiumsEntriesAction">
+			<forward name="entriesPage" path="/premiums/jsp/premiumsEntries.jsp" />
+		</action>
+
+<!-- ========================= Account Management ======= -->
+
+		<action name="LoginForm" path="/login" type="com.amphibian.fair.account.action.LoginAction" />
+
+		<action path="/logout" type="com.amphibian.fair.account.action.LogoutAction" />
+
+		<action path="/accountSelector" type="com.amphibian.fair.account.action.AccountSelectorAction" validate="false">
+			<forward name="accountSelector" path="/account/jsp/Account-Selector.jsp" />
+		</action>
+
+		<action path="/accountManager" type="com.amphibian.fair.account.action.AccountManagerAction" validate="false">
+			<forward name="accountManager" path="/account/jsp/Account-Manager.jsp" />
+		</action>
+	
+		<action name="UserForm" path="/editAccount" type="com.amphibian.fair.account.action.EditUserAction" validate="false">
+			<forward name="userEditor" path="/account/jsp/user.jsp" />
+		</action>
+
+		<action name="UserForm" path="/saveUser" type="com.amphibian.fair.account.action.SaveUserAction" cancellable="true" validate="true" input="/account/jsp/user.jsp" />
+
+		<action name="UserForm" path="/forgotPassword" type="com.amphibian.fair.account.action.ForgotPasswordAction" validate="false">
+			<forward name="forgottenPage" path="/account/jsp/forgotten.jsp" />
+		</action>
+	
+        <action path="/manageUsers" type="com.amphibian.fair.account.action.ManageUsersAction" />
+	
+	</action-mappings>
+
+	<message-resources parameter="com.amphibian.fair.config.WebMessages" />
+
+</struts-config>

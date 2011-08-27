@@ -1,0 +1,8 @@
+<Context>
+
+  <Resource name="jdbc/MySQLDB" auth="Container" type="javax.sql.DataSource"
+            maxActive="10" maxIdle="30" maxWait="30000"
+            username="jcf2" password="whatnot" driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://amphibian.com:3306/jcf2"/>
+
+</Context>

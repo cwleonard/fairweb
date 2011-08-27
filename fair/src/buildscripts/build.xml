@@ -1,0 +1,111 @@
+<project>
+
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="../../build" includes="**/*"/>
+		</delete>
+	</target>
+
+	<target name="compile" description="compiles fair code">
+		<mkdir dir="../../build" />
+		<!-- compile regular stuff -->
+		<javac srcdir="../java" destdir="../../build" debug="true">
+			<classpath>
+				<fileset dir="../../lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<!-- compile web stuff -->
+		<javac srcdir="../web" destdir="../../build" debug="true">
+			<classpath>
+				<fileset dir="../../lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="../../build">
+			<fileset dir="../java">
+				<include name="**/*.properties"/>
+			</fileset>
+			<fileset dir="../web">
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build-war" depends="compile">
+		<mkdir dir="../../dist" />
+		<war destfile="../../dist/ROOT.war" webxml="../web/com/amphibian/fair/config/web.xml">
+			<classes dir="../../build"/>
+			<lib dir="../../lib">
+				<include name="*.jar"/>
+				<exclude name="servlet-api.jar"/>
+				<exclude name="jsp-api.jar"/>
+			</lib>
+			<webinf dir="../../lib">
+				<include name="*.tld"/>
+			</webinf>
+			<webinf dir="../web/com/amphibian/fair/config">
+				<include name="struts-config.xml"/>
+				<include name="*.tld"/>
+			</webinf>
+			<metainf dir="../web/com/amphibian/fair/config">
+				<include name="context.xml"/>
+			</metainf>
+			<zipfileset dir="../web/com/amphibian/fair/css" prefix="css" />
+			<zipfileset dir="../web/com/amphibian/fair/scripts" prefix="scripts" />
+			<zipfileset dir="../web/com/amphibian/fair/images" prefix="images" />
+			<zipfileset dir="../web/com/amphibian/fair/documents" prefix="documents" />
+			<zipfileset dir="../web/com/amphibian/fair/account/jsp" prefix="account/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/main/jsp" prefix="main/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/premiums/jsp" prefix="premiums/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/schedule/jsp" prefix="schedule/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/about/jsp" prefix="about/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/jsp" prefix="jsp">
+				<exclude name="default.jsp" />
+			</zipfileset>
+			<zipfileset dir="../web/com/amphibian/fair/jsp">
+				<include name="default.jsp" />
+			</zipfileset>
+		</war>
+	</target>
+
+	<target name="build-test-war" depends="compile">
+		<mkdir dir="../../dist" />
+		<war destfile="../../dist/jcf.war" webxml="../web/com/amphibian/fair/config/web.xml">
+			<classes dir="../../build"/>
+			<lib dir="../../lib">
+				<include name="*.jar"/>
+				<exclude name="servlet-api.jar"/>
+				<exclude name="jsp-api.jar"/>
+			</lib>
+			<webinf dir="../../lib">
+				<include name="*.tld"/>
+			</webinf>
+			<webinf dir="../web/com/amphibian/fair/config">
+				<include name="struts-config.xml"/>
+				<include name="*.tld"/>
+			</webinf>
+			<metainf dir="../web/com/amphibian/fair/config/test">
+				<include name="context.xml"/>
+			</metainf>
+			<zipfileset dir="../web/com/amphibian/fair/css" prefix="css" />
+			<zipfileset dir="../web/com/amphibian/fair/scripts" prefix="scripts" />
+			<zipfileset dir="../web/com/amphibian/fair/images" prefix="images" />
+			<zipfileset dir="../web/com/amphibian/fair/account/jsp" prefix="account/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/main/jsp" prefix="main/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/premiums/jsp" prefix="premiums/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/schedule/jsp" prefix="schedule/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/about/jsp" prefix="about/jsp" />
+			<zipfileset dir="../web/com/amphibian/fair/jsp" prefix="jsp">
+				<exclude name="default.jsp" />
+			</zipfileset>
+			<zipfileset dir="../web/com/amphibian/fair/jsp">
+				<include name="default.jsp" />
+			</zipfileset>
+		</war>
+	</target>
+
+
+</project>
