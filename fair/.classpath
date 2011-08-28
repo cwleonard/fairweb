@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="lib" path="lib/smtp.jar"/>
 	<classpathentry kind="lib" path="lib/iText-2.1.5.jar"/>
+	<classpathentry kind="lib" path="lib/gson-1.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

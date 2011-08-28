@@ -112,9 +112,9 @@ public class DepartmentDAO extends BaseDAO {
 		
 	}
 	
-	public ArrayList loadAll() {
+	public ArrayList<PremiumsDepartment> loadAll() {
 		
-		ArrayList ret = new ArrayList();
+		ArrayList<PremiumsDepartment> ret = new ArrayList<PremiumsDepartment>();
 		
 		DatabaseConnectionManager dbcm = new DatabaseConnectionManager();
 		Connection conn = dbcm.getConnection();
