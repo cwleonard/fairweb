@@ -1,3 +1,6 @@
+/*
+ * Check.java
+ */
 package com.amphibian.fair.beans;
 
 public class Check {
